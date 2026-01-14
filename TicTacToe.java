@@ -16,6 +16,7 @@ public class TicTacToe {
                 value = sc.nextInt();
             } catch (Exception e) {
                 System.out.println("Input should must be (1-9)");
+                System.exit(1);
             }
             if (isValidMove(value)) {
                 markValue(value);
