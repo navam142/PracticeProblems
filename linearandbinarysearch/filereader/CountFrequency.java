@@ -21,6 +21,8 @@ public class CountFrequency {
                 }
             }
             System.out.println("target word occurence: " + c);
+            br.close();
+            fr.close();
 
         } catch (Exception e) {
             System.out.println(e.getStackTrace());
