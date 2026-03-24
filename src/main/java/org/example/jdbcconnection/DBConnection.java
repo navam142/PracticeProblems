@@ -132,14 +132,29 @@ public class DBConnection {
 
     }
 
-    public static void updatePerson(Person person) {
+    public static void updatePerson(Person person, Person updatePerson) {
         try {
-            Statement st = connection.createStatement();
             Person p = getPersonbyId(person.getId());
+
             if (p != null) {
-                st.executeQuery("DELETE FROM persons where id = " + p.getId());
-                System.out.println("Person with id " + person.getId() + " has been successfully updated");
+
+                String query = "UPDATE person SET first_name=?, last_name=?, age=? WHERE id=?";
+                PreparedStatement ps = connection.prepareStatement(query);
+
+                ps.setString(1, updatePerson.getFirstName());
+                ps.setString(2, updatePerson.getLastName());
+                ps.setInt(3, updatePerson.getAge());
+                ps.setInt(4, person.getId());
+
+                int rowsUpdated = ps.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    System.out.println("Person updated successfully");
+                } else {
+                    System.out.println("Update failed");
+                }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
