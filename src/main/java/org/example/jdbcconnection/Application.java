@@ -7,8 +7,8 @@ public class Application {
 //        DBConnection.createTable("persons");
 //        DBConnection.insertPerson(new Person("John", "Doe", 25));
 //        DBConnection.insertPerson(new Person("Navam", "Sharma", 21));
-        DBConnection.getAllPerson();
-        DBConnection.deletePersonBYId(1);
+        System.out.println(DBConnection.getAllPerson());
+        DBConnection.deletePersonBYId(2);
         DBConnection.getAllPerson();
     }
 }
